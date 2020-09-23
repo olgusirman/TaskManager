@@ -22,7 +22,7 @@ struct HomeContentView: View {
                 debugPrint("Tasks section see all pressed")
             }, title: "Tasks").padding([.leading, .trailing])
 
-            HomeTasksView(cardWidth: cardWidth)
+            HomeTasksView(cardWidth: cardWidth).padding(.top)
 
             VStack {
                 ForEach(tasks) { task in
