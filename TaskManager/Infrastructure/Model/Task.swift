@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct Task: Codable, Identifiable {
-    let id: String = UUID().uuidString
+    var id: String = UUID().uuidString
     let taskDescription: String
     let isChecked: Bool
     let date: Date
