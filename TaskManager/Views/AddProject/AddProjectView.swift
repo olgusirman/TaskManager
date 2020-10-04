@@ -11,6 +11,7 @@ import SwiftUI
 struct AddProjectView: View {
     @State private var title: String = ""
     fileprivate let users = [getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser()]
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
@@ -64,7 +65,7 @@ struct AddProjectView: View {
 
     private var leading: some View {
         Button(action: {
-            debugPrint("Leading pressed")
+            self.presentationMode.wrappedValue.dismiss()
         }, label: {
             Text("Cancel")
         })
@@ -72,7 +73,7 @@ struct AddProjectView: View {
 
     private var trailing: some View {
         Button(action: {
-            debugPrint("Trailing pressed")
+            self.presentationMode.wrappedValue.dismiss()
         }, label: {
             Text("Done")
         })

@@ -26,6 +26,8 @@ struct AddTaskView: View {
     @State private var showDatePicker = false
     @State private var activeDate = Date()
 
+    @Environment(\.presentationMode) var presentationMode
+
     fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -123,7 +125,7 @@ struct AddTaskView: View {
 
     private var leading: some View {
         Button(action: {
-            debugPrint("Leading pressed")
+            self.presentationMode.wrappedValue.dismiss()
         }, label: {
             Text("Cancel")
         })
@@ -131,7 +133,7 @@ struct AddTaskView: View {
 
     private var trailing: some View {
         Button(action: {
-            debugPrint("Trailing pressed")
+            self.presentationMode.wrappedValue.dismiss()
         }, label: {
             Text("Done")
         })
