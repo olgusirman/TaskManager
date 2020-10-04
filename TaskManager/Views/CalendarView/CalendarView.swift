@@ -60,7 +60,7 @@ struct ProjectCalendarView: View {
                 RKWeekdayHeader(rkManager: self.rkManager).padding([.horizontal])
                 Divider()
                 // Month View
-                RKTaskManagerMonth(rkManager: self.rkManager, monthOffset: 0)
+                RKTaskManagerMonth(rkManager: self.rkManager, tasks: self.tasks, monthOffset: 0)
                 
                 if isThereAnyTaskInThatDate {
                     Text(headerName)

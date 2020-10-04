@@ -17,14 +17,28 @@ struct RKDate {
     var isToday: Bool = false
     var isSelected: Bool = false
     var isBetweenStartAndEnd: Bool = false
+    var tasks: [Task]
     
-    init(date: Date, rkManager: RKManager, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
+    init(date: Date, rkManager: RKManager, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool, tasks: [Task] = []) {
         self.date = date
         self.rkManager = rkManager
         self.isDisabled = isDisabled
         self.isToday = isToday
         self.isSelected = isSelected
         self.isBetweenStartAndEnd = isBetweenStartAndEnd
+        self.tasks = tasks
+    }
+    
+    func decideThatDateIncludesTask() -> Bool {
+        tasks.contains(where: { $0.date.day == self.date.day })
+    }
+    
+    func isAllTasksDone() -> Bool {
+        return !(selectedDateTasks.map({ $0.isChecked }).filter({ !$0 }).count > 0)
+    }
+    
+    var selectedDateTasks: [Task] {
+        return tasks.filter({ $0.date.day == self.date.day })
     }
     
     func getText() -> String {
@@ -63,18 +77,23 @@ struct RKDate {
         return backgroundColor
     }
     
+    // Or decide to color depends on the all tasks completed or not
+    func getIsCellIncludeTaskDotColor() -> Color {
+        if isAllTasksDone() {
+            return rkManager.colors.selectedBackColor
+        }
+        return rkManager.colors.disabledColor
+    }
+    
     func getFontWeight() -> Font.Weight {
         var fontWeight = Font.Weight.medium
         if isDisabled {
             fontWeight = Font.Weight.thin
         } else if isSelected {
-//            fontWeight = Font.Weight.heavy
             fontWeight = Font.Weight.regular
         } else if isToday {
-//            fontWeight = Font.Weight.heavy
             fontWeight = Font.Weight.regular
         } else if isBetweenStartAndEnd {
-//            fontWeight = Font.Weight.heavy
             fontWeight = Font.Weight.regular
         }
         return fontWeight
