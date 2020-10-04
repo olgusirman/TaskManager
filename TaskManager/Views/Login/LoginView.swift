@@ -20,27 +20,31 @@ struct LoginView: View {
                         Image("loginHeadline1")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame( maxHeight: metrics.size.height / 2)
+                            .frame( maxHeight: metrics.size.height * 0.45)
+                            .clipped()
                         VStack {
                             Text("Work Together")
                                 .font(.system(size: 40, weight: .bold))
                             Text("Get everyone around you always in-sync with shared lists and assigned tasks")
                                 .font(.system(size: 20))
                                 .multilineTextAlignment(.center)
+                                .padding(.horizontal, 40)
                         }
                         Spacer()
                     }
-                    VStack (spacing: 20) {
+                    VStack {
                         Image("loginHeadline2")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame( maxHeight: metrics.size.height / 2)
+                            .frame( maxHeight: metrics.size.height * 0.45)
+                            .clipped()
                         VStack {
                             Text("Get Organized")
                                 .font(.system(size: 40, weight: .bold))
                             Text("Capture and organize tasks the moment they pop into your head")
                                 .font(.system(size: 20))
                                 .multilineTextAlignment(.center)
+                                .padding(.horizontal, 40)
                         }
                         Spacer()
                     }
@@ -50,11 +54,12 @@ struct LoginView: View {
                 loginButtons
                 Spacer()
             }
-        }.edgesIgnoringSafeArea(.top)
+        }
+        //.edgesIgnoringSafeArea(.top)
     }
         
     private var loginButtons: some View {
-        VStack (spacing: 20) {
+        VStack (spacing: 38) {
             Button {
                 self.userManager.isLoggedIn = true
             } label: {
