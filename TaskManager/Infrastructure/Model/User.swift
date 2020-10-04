@@ -9,8 +9,6 @@
 import Foundation
 import SwiftUI
 
-// let mockUser =
-
 struct User: Identifiable {
     let id: String
     let name: String

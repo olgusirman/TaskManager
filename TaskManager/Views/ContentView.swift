@@ -12,7 +12,22 @@ struct ContentView: View {
     @State private var searchText = ""
     private var tasks: [Task] = []
 
+    @EnvironmentObject var userManager: UserManager
+
     var body: some View {
+        if userManager.isLoggedIn {
+            contentView
+        } else {
+            LoginView()
+                .environmentObject(self.userManager)
+        }
+    }
+    
+    private var loginView: some View {
+        LoginView()
+    }
+    
+    private var contentView: some View {
         NavigationView {
             ZStack {
                 VStack { // MainVStack
