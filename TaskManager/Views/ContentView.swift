@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var searchText = ""
-    private var tasks: [Task] = []
-
     @EnvironmentObject var userManager: UserManager
-
+    
+    @State private var searchText = ""
+    @State private var showProfileView = false
+    
+    private var tasks: [Task] = []
+    
     var body: some View {
         if userManager.isLoggedIn {
             contentView
@@ -38,7 +40,7 @@ struct ContentView: View {
                         }
                         Spacer()
                     }.resignKeyboardOnDragGesture()
-
+                    
                     ZStack {
                         BlurView(style: .systemUltraThinMaterial)
                         ToolBarView()
@@ -53,24 +55,30 @@ struct ContentView: View {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             })
             .padding([.horizontal])
+            .fullScreenCover(isPresented: $showProfileView) {
+                ProfileView()
+            }
+//            .sheet(isPresented: $showProfileView) {}
         }
     }
-
+    
     private var leading: some View {
         Text("TUESDAY, MAY 12")
             .font(.footnote)
             .foregroundColor(.secondary)
             .bold()
     }
-
+    
     private var trailing: some View {
-        UserProfileView()
+        UserProfileView().onTapGesture {
+            self.showProfileView = true
+        }
     }
-
+    
     private var cardWidth: CGFloat {
         bounds.size.width - 40
     }
-
+    
     private var bounds: CGRect { return UIScreen.main.bounds }
 }
 

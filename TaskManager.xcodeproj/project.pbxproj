@@ -19,6 +19,7 @@
 		05A117F024EAB86B0062EBC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A117EE24EAB86B0062EBC6 /* LaunchScreen.storyboard */; };
 		05A4F461252A5E5B002EE79F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4F460252A5E5B002EE79F /* UserManager.swift */; };
 		05A4F465252A6086002EE79F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4F464252A6086002EE79F /* LoginView.swift */; };
+		05A4F469252A87CE002EE79F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4F468252A87CE002EE79F /* ProfileView.swift */; };
 		05B0C87E24F46A9700CDD601 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B0C87C24F468CC00CDD601 /* SearchBarView.swift */; };
 		05B0C87F24F46A9B00CDD601 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B0C87B24F468CC00CDD601 /* SearchBar.swift */; };
 		05B0C88024F46A9D00CDD601 /* AcitivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B0C87D24F468CC00CDD601 /* AcitivityIndicatorView.swift */; };
@@ -59,6 +60,7 @@
 		05A117F124EAB86B0062EBC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05A4F460252A5E5B002EE79F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		05A4F464252A6086002EE79F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		05A4F468252A87CE002EE79F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		05B0C87B24F468CC00CDD601 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		05B0C87C24F468CC00CDD601 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		05B0C87D24F468CC00CDD601 /* AcitivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcitivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		05A4F467252A87C5002EE79F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				05A4F468252A87CE002EE79F /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		05B0C87924F468B100CDD601 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,15 +223,16 @@
 		05B50C0B24F12A5300DF1FDF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				05A4F463252A607C002EE79F /* Login */,
-				05BDAE3C250ECC8D0018EEE5 /* CalendarView */,
+				05A117E724EAB8610062EBC6 /* ContentView.swift */,
+				0550489D250061DB00D42B48 /* Activity */,
 				05BDAE39250EBC780018EEE5 /* AddProject */,
 				05BDAE34250E70760018EEE5 /* AddTask */,
-				05C6A6832505644C00440109 /* MakeEdit */,
-				0550489D250061DB00D42B48 /* Activity */,
-				05B0C88124F4827200CDD601 /* Home */,
+				05BDAE3C250ECC8D0018EEE5 /* CalendarView */,
 				05B0C87924F468B100CDD601 /* Components */,
-				05A117E724EAB8610062EBC6 /* ContentView.swift */,
+				05B0C88124F4827200CDD601 /* Home */,
+				05A4F463252A607C002EE79F /* Login */,
+				05C6A6832505644C00440109 /* MakeEdit */,
+				05A4F467252A87C5002EE79F /* Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +387,7 @@
 				05B0C88724F483AC00CDD601 /* ProjectCardView.swift in Sources */,
 				05BDAE4C250EDAB10018EEE5 /* RKColorSettings.swift in Sources */,
 				05A4F465252A6086002EE79F /* LoginView.swift in Sources */,
+				05A4F469252A87CE002EE79F /* ProfileView.swift in Sources */,
 				05BDAE38250E7CBB0018EEE5 /* SelectProjectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
