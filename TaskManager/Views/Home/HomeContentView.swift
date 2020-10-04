@@ -24,7 +24,7 @@ struct HomeContentView: View {
 
             HomeTasksView(cardWidth: cardWidth).padding(.top)
 
-            VStack {
+            LazyVStack {
                 ForEach(tasks) { task in
                     HomeTaskRow(task: task)
                         .padding([.horizontal])
@@ -50,7 +50,7 @@ struct ProjectsSectionView: View {
 
             NavigationLink(destination: MakeEditView(project: self.selectedProject), isActive: self.$navigateToProject) {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
+                    LazyHStack {
                         ForEach(projects) { project in
                             HStack {
                                 Spacer(minLength: 20)

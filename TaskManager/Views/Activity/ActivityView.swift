@@ -69,7 +69,7 @@ struct ActivitySectionRowView: View {
     var activities: [Activity]
 
     var body: some View {
-        VStack {
+        LazyVStack {
             ForEach(activities) { activity in
                 ActivityRowView(activity: activity)
             }

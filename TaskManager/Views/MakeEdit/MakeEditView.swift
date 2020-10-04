@@ -43,7 +43,7 @@ struct MakeEditContentView: View {
                     Spacer()
                 }
 
-                VStack {
+                LazyVStack {
                     ForEach(tasks) { task in
                         HomeTaskRow(task: task)
                     }

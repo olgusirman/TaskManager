@@ -65,7 +65,7 @@ struct ProjectCalendarView: View {
                 if isThereAnyTaskInThatDate {
                     Text(headerName)
                         .fontWeight(.semibold)
-                    VStack {
+                    LazyVStack {
                         ForEach(selectedDateTasks) { task in
                             HomeTaskRow(task: task)
                         }

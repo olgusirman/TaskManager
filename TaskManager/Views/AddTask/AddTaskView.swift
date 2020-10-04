@@ -105,7 +105,7 @@ struct AddTaskView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(users) { user in
-                                    HStack {
+                                    LazyHStack {
                                         AssignedUserView(user: user)
                                     }
                                 }
