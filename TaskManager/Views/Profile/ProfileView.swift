@@ -21,11 +21,11 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView (showsIndicators: false) {
             header
                 .frame(height: 240)
             VStack(alignment: .leading) {
-                VStack (alignment: .leading, spacing: 20) {
+                VStack (alignment: .leading) {
                     Group {
                         HStack {
                             Text("Victoria Mak")
@@ -40,7 +40,7 @@ struct ProfileView: View {
                             .foregroundColor(.secondary)
                     }.padding(.horizontal)
                     // TODO: Do some padding to group here
-                    Divider()
+                    Divider().padding(.leading)
                 }
                 teamMembersView
                 statisticsView
@@ -75,9 +75,14 @@ struct ProfileView: View {
     private var teamMembersView: some View {
         VStack(alignment: .leading) {
             Group {
-                Text("Your Team")
-                    .font(.system(size: 22, weight: .bold))
-                    .padding(.horizontal)
+                HStack {
+                    Text("Your Team")
+                        .font(.system(size: 22, weight: .bold))
+                    Spacer()
+                    Button("See All") {
+                        debugPrint(#function)
+                    }
+                }.padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(teamMembers) { user in
@@ -85,9 +90,9 @@ struct ProfileView: View {
                                 AssignedUserView(user: user)
                             }
                         }
-                    }
+                    }.padding(.horizontal)
                 }
-            }.padding(.horizontal)
+            }
             Divider().padding(.leading)
         }
     }
@@ -133,9 +138,9 @@ struct ProfileView: View {
             }
         }
         .padding()
-        .background(Color.secondary.opacity(0.1))
+        .background(Color.secondary.opacity(0.05))
         .cornerRadius(10)
-        .padding()
+        .padding(.horizontal)
     }
 }
 
