@@ -10,7 +10,15 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    fileprivate let teamMembers = [getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser()]
+    private let teamMembers = [getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser()]
+
+    private var allTasks: Int = 145
+    private var doneTasks: Int = 126
+    private var activitySection = section1
+
+    private var tasksPercentage: Int {
+        return Int((doneTasks / allTasks) * 100)
+    }
     
     var body: some View {
         ScrollView {
@@ -27,17 +35,17 @@ struct ProfileView: View {
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(.blue)
-                        }.padding(.trailing)
+                        }
                         Text("victoriamak@kukutro.com")
                             .foregroundColor(.secondary)
-                    }
+                    }.padding(.horizontal)
                     // TODO: Do some padding to group here
                     Divider()
                 }
                 teamMembersView
                 statisticsView
+                ActivitySectionnView(activities: activitySection).padding(.horizontal)
             }
-            .padding([.leading])
         }
         .edgesIgnoringSafeArea(.top)
     }
@@ -66,34 +74,84 @@ struct ProfileView: View {
     
     private var teamMembersView: some View {
         VStack(alignment: .leading) {
-            Text("Your Team")
-                .font(.system(size: 22, weight: .bold))
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(teamMembers) { user in
-                        LazyHStack {
-                            AssignedUserView(user: user)
+            Group {
+                Text("Your Team")
+                    .font(.system(size: 22, weight: .bold))
+                    .padding(.horizontal)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(teamMembers) { user in
+                            LazyHStack {
+                                AssignedUserView(user: user)
+                            }
                         }
                     }
                 }
-            }
-            Divider()
+            }.padding(.horizontal)
+            Divider().padding(.leading)
         }
     }
     
     private var statisticsView: some View {
         VStack (alignment: .leading, spacing: 20) {
-            Text("Statistics")
-                .font(.system(size: 22, weight: .bold))
+            Group {
+                Text("Statistics")
+                    .font(.system(size: 22, weight: .bold))
+                HStack {
+                    Text("Tasks")
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding(.horizontal)
+            slider
+            Divider()
+                .padding(.leading)
             HStack {
-                Text("Tasks")
+                Text("Projects")
                 Spacer()
                 Image(systemName: "chevron.right")
                     .foregroundColor(.secondary)
-            }.padding(.trailing)
-            // TODO: Slider on progress
-            
+            }.padding(.horizontal)
+            Divider()
+                .padding(.leading)
         }
+    }
+    
+    private var slider: some View {
+        VStack {
+            ProgressView("", value: Float(doneTasks), total: Float(allTasks))
+            HStack {
+                Text("\(allTasks)")
+                    .fontWeight(.semibold)
+                Text("/ \(doneTasks) done")
+                    .foregroundColor(.secondary)
+                Spacer()
+                Text("\(tasksPercentage)%")
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding()
+        .background(Color.secondary.opacity(0.1))
+        .cornerRadius(10)
+        .padding()
+    }
+}
+
+struct ActivitySectionnView: View {
+    var activities: ActivityPageModel
+    
+    var body: some View {
+        VStack (alignment: .leading) {
+            Section(header: sectionHeader) {
+                ActivitySectionRowView(activities: activities.activities)
+            }
+        }
+    }
+    
+    private var sectionHeader: some View {
+        Text("Today").font(.title).bold()
     }
 }
 
@@ -102,12 +160,3 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView()
     }
 }
-
-let articleContent =
-
-    """
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-    At vero eos et accusam et justo duo dolores et ea rebum.
-    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    """
