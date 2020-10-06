@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+
     private let teamMembers = [getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser(), getRandomUser()]
 
     private var allTasks: Int = 145
@@ -68,6 +70,8 @@ struct ProfileView: View {
                         .clipped()
                         .offset(y: -geometry.frame(in: .global).minY)
                 }
+            }.addDismissButtonToCorner {
+                self.presentationMode.wrappedValue.dismiss()
             }
         }
     }

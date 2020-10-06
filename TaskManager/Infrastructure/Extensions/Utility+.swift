@@ -40,6 +40,33 @@ extension View {
     }
 }
 
+extension View {
+    func alignToCorner(withRatio ratio: CGFloat = 0.8,
+                      alignment: Alignment = .topTrailing) -> some View {
+        alignmentGuide(alignment.horizontal) {
+            $0.width * ratio
+        }
+        .alignmentGuide(alignment.vertical) {
+            $0[.bottom] - $0.height * ratio
+        }
+    }
+}
+
+extension View {
+    func addDismissButtonToCorner(handler: @escaping () -> Void) -> some View {
+        ZStack(alignment: .topTrailing) {
+            self
+            Button(action: handler) {
+                Text("Close").fontWeight(.semibold)
+            }.foregroundColor(.primary)
+            .padding(8)
+            .background(Blur())
+            .cornerRadius(25)
+            .offset(x: -8, y: 20)
+        }
+    }
+}
+
 struct Blur: UIViewRepresentable {
     let style: UIBlurEffect.Style = .systemMaterial
 
