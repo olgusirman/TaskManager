@@ -8,137 +8,82 @@
 
 import SwiftUI
 
-// FIXME: Don't care too much for now, There is a new ToolBar component in iOS-14
 struct ToolBarView: View {
-    private static let buttonHeight: CGFloat = 44
-    private static let listButtonEdge: CGFloat = buttonHeight / 2
-    private static let fillButtonEdge: CGFloat = 28
-
-    // TODO: Need actions to here for tabbar buttons
+    
+    @ObservedObject var sheetRouter: SheetRouter
+    
+    static let listButtonEdge: CGFloat = buttonHeight / 2
+    static let buttonHeight: CGFloat = 44
+    static let fillButtonEdge: CGFloat = 28
+    
     @State private var showActionSheet = false
-    @State private var presentAddTaskView = false
-    @State private var presentAddProjectView = false
-
-    @State private var presentAddView = false
-
+    
     enum ToolBarPresentedView {
         case addTask
         case addProject
     }
-
+    
     @State private var willPresentedView: ToolBarPresentedView = .addTask
-
+    
     var body: some View {
         HStack {
             NavigationLink(
                 destination: ActivityView()
             ) {
                 Image(systemName: "list.bullet")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: ToolBarView.listButtonEdge, height: ToolBarView.listButtonEdge)
+                    .configureTabIcon()
             }
             .frame(width: ToolBarView.buttonHeight, height: ToolBarView.buttonHeight)
             Spacer()
             Button(action: {
-                debugPrint("Toolbar plus pressed")
                 self.showActionSheet = true
             }) {
                 Image(systemName: "plus.circle.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: ToolBarView.fillButtonEdge, height: ToolBarView.fillButtonEdge)
+                    .configureTabIcon()
             }
             .frame(width: ToolBarView.buttonHeight, height: ToolBarView.buttonHeight)
-
+            
             Spacer()
             
             NavigationLink(
                 destination: ProjectCalendarView()
             ) {
                 Image(systemName: "calendar")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: ToolBarView.listButtonEdge, height: ToolBarView.listButtonEdge)
+                    .configureTabIcon()
             }
             .frame(width: ToolBarView.buttonHeight, height: ToolBarView.buttonHeight)
-        
+            
         }.actionSheet(isPresented: $showActionSheet) {
             //TODO: Use custom ActinSheet here, migrate from UIKit with images
             ActionSheet(
                 title: Text(""),
                 message: nil,
                 buttons: [
-                    .cancel { print(self.showActionSheet) },
+                    .cancel { debugPrint(self.showActionSheet) },
                     .default(Text("Add Project")) {
-                        self.willPresentedView = .addProject
-                        self.presentAddView = true
+                        self.sheetRouter.sheetDestination = .addProject
                     },
                     .default(Text("Add Task")) {
-                        self.willPresentedView = .addTask
-                        self.presentAddView = true
+                        self.sheetRouter.sheetDestination = .addTask
                     },
                 ]
             )
-        }.sheet(isPresented: $presentAddView) {
-            if self.willPresentedView == .addTask {
-                AddTaskView()
-            } else if self.willPresentedView == .addProject {
-                AddProjectView()
-            }
         }
     }
 }
 
-struct customSheet: View {
-    @Binding var showActionSheet: Bool
-
-    var body: some View {
-        VStack {
-            Button(action: {
-                withAnimation(.spring()) {
-                    self.showActionSheet = false
-                }
-            }) {
-                HStack {
-                    Image(systemName: "camera")
-                    Spacer()
-                    Text("Take a picture")
-                    Spacer()
-                }
-            }
-
-            Button(action: {
-                withAnimation(.spring()) {
-                    self.showActionSheet = false
-                }
-            }) {
-                HStack {
-                    Image(systemName: "camera")
-                    Spacer()
-                    Text("Take a picture")
-                    Spacer()
-                }
-            }
-            Divider()
-            Button(action: {
-                withAnimation {
-                    self.showActionSheet = false
-                }
-            }) {
-                HStack {
-                    Image(systemName: "trash")
-                    Spacer()
-                    Text("Delete")
-                    Spacer()
-                }
-            }.foregroundColor(.red)
-        }
+fileprivate extension Image {
+    
+    func configureTabIcon() -> some View {
+        resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: ToolBarView.listButtonEdge, height: ToolBarView.listButtonEdge)
     }
+    
 }
 
 struct ToolBarView_Previews: PreviewProvider {
     static var previews: some View {
-        ToolBarView()
+        ToolBarView(sheetRouter: SheetRouter())
     }
 }

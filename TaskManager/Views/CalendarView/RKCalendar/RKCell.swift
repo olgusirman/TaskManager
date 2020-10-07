@@ -14,6 +14,10 @@ struct RKCell: View {
     
     var cellWidth: CGFloat
     
+    var isCellIncludesTask: Bool {
+        rkDate.decideThatDateIncludesTask()
+    }
+    
     var body: some View {
         VStack {
             Text(rkDate.getText())
@@ -22,10 +26,28 @@ struct RKCell: View {
                 .frame(width: cellWidth, height: cellWidth)
                 //.font(.system(size: 20))
                 .background(rkDate.getBackgroundColor())
-                .cornerRadius(cellWidth/2)
+                .mask(Circle())
+//                .cornerRadius(cellWidth/2)
+            if isCellIncludesTask {
+                Circle()
+                    .foregroundColor(rkDate.getIsCellIncludeTaskDotColor())
+                    .frame(width: 5, height: 5)
+            } else {
+                Circle()
+                    .foregroundColor(rkDate.getIsCellIncludeTaskDotColor())
+                    .frame(width: 5, height: 5)
+                    .hidden()
+            }
+            
         }
-        
     }
+    
+    var includesTaskMark: some View {
+        Circle()
+            .foregroundColor(.blue)
+            .frame(width: 5, height: 5)
+    }
+    
 }
 
 #if DEBUG

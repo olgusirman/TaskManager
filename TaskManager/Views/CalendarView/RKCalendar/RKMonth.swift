@@ -29,11 +29,11 @@ struct RKMonth: View {
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10){
             Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
-            VStack(alignment: .leading, spacing: 5) {
+            LazyVStack(alignment: .leading, spacing: 5) {
                 ForEach(monthsArray, id:  \.self) { row in
-                    HStack() {
+                    LazyHStack() {
                         ForEach(row, id:  \.self) { column in
-                            HStack() {
+                            LazyHStack() {
                                 Spacer()
                                 if self.isThisMonth(date: column) {
                                     RKCell(rkDate: RKDate(
@@ -43,7 +43,7 @@ struct RKMonth: View {
                                         isToday: self.isToday(date: column),
                                         isSelected: self.isSpecialDate(date: column),
                                         isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
-                                        cellWidth: self.cellWidth)
+                                           cellWidth: self.cellWidth)
                                         .onTapGesture { self.dateTapped(date: column) }
                                 } else {
                                     Text("").frame(width: self.cellWidth, height: self.cellWidth)
@@ -243,6 +243,7 @@ struct RKTaskManagerMonth: View {
     
     @ObservedObject var rkManager: RKManager
     
+    let tasks: [Task]
     let monthOffset: Int
     
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
@@ -254,6 +255,9 @@ struct RKTaskManagerMonth: View {
     
     @State var showTime = false
     
+    fileprivate func decideThatDateIncludesTask(selectedDate: Date) -> Bool {
+        tasks.contains(where: { $0.date.day == selectedDate.day })
+    }
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10){
@@ -268,19 +272,17 @@ struct RKTaskManagerMonth: View {
                                     Spacer()
                                     if self.isThisMonth(date: column) {
                                         RKCell(rkDate: RKDate(
-                                            date: column,
-                                            rkManager: self.rkManager,
-                                            isDisabled: !self.isEnabled(date: column),
-                                            isToday: self.isToday(date: column),
-                                            isSelected: self.isSpecialDate(date: column),
-                                            isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
-                                            cellWidth: self.cellWidth)
+                                                date: column,
+                                                rkManager: self.rkManager,
+                                                isDisabled: !self.isEnabled(date: column),
+                                                isToday: self.isToday(date: column),
+                                                isSelected: self.isSpecialDate(date: column),
+                                                isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column), tasks: self.tasks),
+                                               cellWidth: self.cellWidth)
                                             .onTapGesture { self.dateTapped(date: column) }
                                     } else {
-                                        // Ghost
-                                        Text("30")
-                                            .hidden()
-                                            .frame(width: self.cellWidth, height: self.cellWidth)
+                                        // Empty Ghost Cell for better UI alignment
+                                        emptyCell
                                     }
                                     Spacer()
                                 }
@@ -294,6 +296,12 @@ struct RKTaskManagerMonth: View {
         }.background(rkManager.colors.monthBackColor)
     }
 
+    fileprivate var emptyCell: some View {
+        RKCell(rkDate: RKDate(date: Date(), rkManager: self.rkManager, isDisabled: true, isToday: false, isSelected: false, isBetweenStartAndEnd: false),
+               cellWidth: self.cellWidth)
+            .hidden()
+    }
+    
      func isThisMonth(date: Date) -> Bool {
          return self.rkManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
      }
