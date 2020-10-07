@@ -10,16 +10,14 @@ import SwiftUI
 
 // FIXME: Don't care too much for now, There is a new ToolBar component in iOS-14
 struct ToolBarView: View {
+    
+    @ObservedObject var sheetRouter: SheetRouter
+    
     static let listButtonEdge: CGFloat = buttonHeight / 2
     private static let buttonHeight: CGFloat = 44
     private static let fillButtonEdge: CGFloat = 28
     
-    // TODO: Need actions to here for tabbar buttons
     @State private var showActionSheet = false
-    @State private var presentAddTaskView = false
-    @State private var presentAddProjectView = false
-    
-    @State private var presentAddView = false
     
     enum ToolBarPresentedView {
         case addTask
@@ -64,21 +62,13 @@ struct ToolBarView: View {
                 buttons: [
                     .cancel { debugPrint(self.showActionSheet) },
                     .default(Text("Add Project")) {
-                        self.willPresentedView = .addProject
-                        self.presentAddView = true
+                        self.sheetRouter.sheetDestination = .addProject
                     },
                     .default(Text("Add Task")) {
-                        self.willPresentedView = .addTask
-                        self.presentAddView = true
+                        self.sheetRouter.sheetDestination = .addTask
                     },
                 ]
             )
-        }.sheet(isPresented: $presentAddView) {
-            if self.willPresentedView == .addTask {
-                AddTaskView()
-            } else if self.willPresentedView == .addProject {
-                AddProjectView()
-            }
         }
     }
 }
@@ -95,6 +85,6 @@ fileprivate extension Image {
 
 struct ToolBarView_Previews: PreviewProvider {
     static var previews: some View {
-        ToolBarView()
+        ToolBarView(sheetRouter: SheetRouter())
     }
 }

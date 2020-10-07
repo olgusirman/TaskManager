@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userManager: UserManager
-    
+    @ObservedObject var sheetRouter = SheetRouter()
+
     @State private var searchText = ""
-    @State private var showProfileView = false
     
     private var tasks: [Task] = []
     
@@ -43,7 +43,7 @@ struct ContentView: View {
                     
                     ZStack {
                         BlurView(style: .systemUltraThinMaterial)
-                        ToolBarView()
+                        ToolBarView(sheetRouter: self.sheetRouter)
                             .frame(idealWidth: .infinity).padding([.leading, .trailing])
                     }
                     .frame(width: bounds.size.width, height: 44, alignment: .bottom)
@@ -55,8 +55,8 @@ struct ContentView: View {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             })
             .padding([.horizontal])
-            .fullScreenCover(isPresented: $showProfileView) {
-                ProfileView()
+            .fullScreenCover(isPresented: self.$sheetRouter.showSheet) {
+                self.sheetRouter.sheetView()
             }
         }
     }
@@ -70,7 +70,7 @@ struct ContentView: View {
     
     private var trailing: some View {
         UserProfileView().onTapGesture {
-            self.showProfileView = true
+            self.sheetRouter.sheetDestination = .profile
         }
     }
     

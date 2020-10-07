@@ -20,7 +20,7 @@ struct HomeContentView: View {
 
             HomeSectionTitleView(action: {
                 debugPrint("Tasks section see all pressed")
-            }, title: "Tasks").padding([.leading, .trailing])
+            }, title: "Tasks").padding(.horizontal)
 
             HomeTasksView(cardWidth: cardWidth).padding(.top)
 
