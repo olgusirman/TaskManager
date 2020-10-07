@@ -11,9 +11,12 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var userManager: UserManager
     @ObservedObject var sheetRouter = SheetRouter()
-
-    @State private var searchText = ""
     
+    @State private var searchText = ""
+    @State private var showActionSheet = false
+    @State private var navigateToActivityItem = false
+    @State private var navigateToCalendar = false
+
     private var tasks: [Task] = []
     
     var body: some View {
@@ -32,6 +35,9 @@ struct ContentView: View {
     private var contentView: some View {
         NavigationView {
             ZStack {
+                NavigationLink(destination: ActivityView(), isActive: self.$navigateToActivityItem) { EmptyView() }
+                NavigationLink(destination: ProjectCalendarView(), isActive: self.$navigateToCalendar) { EmptyView() }
+                                
                 VStack { // MainVStack
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
@@ -40,13 +46,6 @@ struct ContentView: View {
                         }
                         Spacer()
                     }.resignKeyboardOnDragGesture()
-                    
-                    ZStack {
-                        BlurView(style: .systemUltraThinMaterial)
-                        ToolBarView(sheetRouter: self.sheetRouter)
-                            .frame(idealWidth: .infinity).padding([.leading, .trailing])
-                    }
-                    .frame(width: bounds.size.width, height: 44, alignment: .bottom)
                 }
             }
             .navigationBarTitle("Today")
@@ -58,6 +57,49 @@ struct ContentView: View {
             .fullScreenCover(isPresented: self.$sheetRouter.showSheet) {
                 self.sheetRouter.sheetView()
             }
+            
+            .actionSheet(isPresented: $showActionSheet) {
+                //TODO: Use custom ActinSheet here, migrate from UIKit with images
+                ActionSheet(
+                    title: Text(""),
+                    message: nil,
+                    buttons: [
+                        .cancel { debugPrint(self.showActionSheet) },
+                        .default(Text("Add Project")) {
+                            self.sheetRouter.sheetDestination = .addProject
+                        },
+                        .default(Text("Add Task")) {
+                            self.sheetRouter.sheetDestination = .addTask
+                        },
+                    ]
+                )
+            }.toolbar {
+                
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button(action: {
+                        self.navigateToActivityItem = true
+                    }) {
+                        Image(systemName: "list.bullet")
+                            .configureTabIcon()
+                    }
+                    Spacer()
+                    Button(action: {
+                        self.showActionSheet = true
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .configureTabIcon()
+                    }
+                    Spacer()
+                    Button(action: {
+                        self.navigateToCalendar = true
+                    }) {
+                        Image(systemName: "calendar")
+                            .configureTabIcon()
+                    }
+                }
+                
+            }
+            
         }
     }
     
@@ -79,6 +121,16 @@ struct ContentView: View {
     }
     
     private var bounds: CGRect { return UIScreen.main.bounds }
+}
+
+fileprivate extension Image {
+    
+    func configureTabIcon() -> some View {
+        resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: ToolBarView.listButtonEdge, height: ToolBarView.listButtonEdge)
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

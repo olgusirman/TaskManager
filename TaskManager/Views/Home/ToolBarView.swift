@@ -8,14 +8,13 @@
 
 import SwiftUI
 
-// FIXME: Don't care too much for now, There is a new ToolBar component in iOS-14
 struct ToolBarView: View {
     
     @ObservedObject var sheetRouter: SheetRouter
     
     static let listButtonEdge: CGFloat = buttonHeight / 2
-    private static let buttonHeight: CGFloat = 44
-    private static let fillButtonEdge: CGFloat = 28
+    static let buttonHeight: CGFloat = 44
+    static let fillButtonEdge: CGFloat = 28
     
     @State private var showActionSheet = false
     
