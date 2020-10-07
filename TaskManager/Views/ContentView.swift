@@ -58,7 +58,6 @@ struct ContentView: View {
             .fullScreenCover(isPresented: $showProfileView) {
                 ProfileView()
             }
-//            .sheet(isPresented: $showProfileView) {}
         }
     }
     

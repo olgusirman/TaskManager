@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0521460C252CEEA7000228A9 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0521460B252CEEA7000228A9 /* Blur.swift */; };
+		05214613252D2CB9000228A9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214612252D2CB9000228A9 /* Service.swift */; };
+		05214616252D2CE4000228A9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214615252D2CE4000228A9 /* Request.swift */; };
+		0521461A252D2D82000228A9 /* SomeSampleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214619252D2D82000228A9 /* SomeSampleRequest.swift */; };
+		0521461D252D2E7B000228A9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0521461C252D2E7B000228A9 /* API.swift */; };
+		05214620252D2E93000228A9 /* TaskManagerEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0521461F252D2E93000228A9 /* TaskManagerEnvironment.swift */; };
+		05214623252D2ED6000228A9 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214622252D2ED6000228A9 /* Configuration.swift */; };
+		0521462D252D3034000228A9 /* SomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0521462C252D3034000228A9 /* SomeService.swift */; };
+		05214631252D3236000228A9 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214630252D3236000228A9 /* Font+.swift */; };
+		05214634252D327A000228A9 /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214633252D327A000228A9 /* Image+.swift */; };
+		05214637252D329B000228A9 /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214636252D329B000228A9 /* CGFloat+.swift */; };
+		0521463F252D3595000228A9 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0521463E252D3595000228A9 /* Repository.swift */; };
+		05214642252D35B7000228A9 /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214641252D35B7000228A9 /* PersistenceStore.swift */; };
+		05214645252D3604000228A9 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05214644252D3604000228A9 /* DataCache.swift */; };
 		053D117C24F5C09F00CBCB94 /* Utility+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D117B24F5C09F00CBCB94 /* Utility+.swift */; };
 		053D117E24F5C13100CBCB94 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D117D24F5C13100CBCB94 /* Task.swift */; };
 		0550489F250061F300D42B48 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0550489E250061F300D42B48 /* Activity.swift */; };
@@ -46,6 +60,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0521460B252CEEA7000228A9 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		05214612252D2CB9000228A9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		05214615252D2CE4000228A9 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		05214619252D2D82000228A9 /* SomeSampleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeSampleRequest.swift; sourceTree = "<group>"; };
+		0521461C252D2E7B000228A9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		0521461F252D2E93000228A9 /* TaskManagerEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerEnvironment.swift; sourceTree = "<group>"; };
+		05214622252D2ED6000228A9 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		0521462C252D3034000228A9 /* SomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeService.swift; sourceTree = "<group>"; };
+		05214630252D3236000228A9 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		05214633252D327A000228A9 /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
+		05214636252D329B000228A9 /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
+		0521463E252D3595000228A9 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		05214641252D35B7000228A9 /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		05214644252D3604000228A9 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		053D117B24F5C09F00CBCB94 /* Utility+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utility+.swift"; sourceTree = "<group>"; };
 		053D117D24F5C13100CBCB94 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		0550489E250061F300D42B48 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -97,6 +125,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0521460A252CEE8C000228A9 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0521460B252CEEA7000228A9 /* Blur.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		05214611252D2CAD000228A9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0521461C252D2E7B000228A9 /* API.swift */,
+				05214622252D2ED6000228A9 /* Configuration.swift */,
+				0521461F252D2E93000228A9 /* TaskManagerEnvironment.swift */,
+				05214615252D2CE4000228A9 /* Request.swift */,
+				05214612252D2CB9000228A9 /* Service.swift */,
+				05214618252D2D77000228A9 /* Request */,
+				05214626252D3022000228A9 /* Service */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		05214618252D2D77000228A9 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				05214619252D2D82000228A9 /* SomeSampleRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		05214626252D3022000228A9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0521462C252D3034000228A9 /* SomeService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0521462F252D322A000228A9 /* Styleguide */ = {
+			isa = PBXGroup;
+			children = (
+				05214639252D32CA000228A9 /* Resources */,
+				05214630252D3236000228A9 /* Font+.swift */,
+				05214633252D327A000228A9 /* Image+.swift */,
+				05214636252D329B000228A9 /* CGFloat+.swift */,
+			);
+			path = Styleguide;
+			sourceTree = "<group>";
+		};
+		05214639252D32CA000228A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0521463D252D358B000228A9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0521463E252D3595000228A9 /* Repository.swift */,
+				05214641252D35B7000228A9 /* PersistenceStore.swift */,
+				05214644252D3604000228A9 /* DataCache.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		053D117A24F5C03800CBCB94 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +307,10 @@
 		05B0C88C24F48A4A00CDD601 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				0521463D252D358B000228A9 /* Data */,
+				0521462F252D322A000228A9 /* Styleguide */,
+				05214611252D2CAD000228A9 /* Networking */,
+				0521460A252CEE8C000228A9 /* Helper */,
 				05A4F45F252A5E4F002EE79F /* Manager */,
 				053D117F24F5C14A00CBCB94 /* Model */,
 				053D117A24F5C03800CBCB94 /* Extensions */,
@@ -358,33 +456,47 @@
 			files = (
 				05B0C87E24F46A9700CDD601 /* SearchBarView.swift in Sources */,
 				05B0C88024F46A9D00CDD601 /* AcitivityIndicatorView.swift in Sources */,
+				05214634252D327A000228A9 /* Image+.swift in Sources */,
 				05BDAE3E250ECC9B0018EEE5 /* CalendarView.swift in Sources */,
+				05214637252D329B000228A9 /* CGFloat+.swift in Sources */,
 				05BDAE48250EDAB10018EEE5 /* RKDate.swift in Sources */,
+				0521461A252D2D82000228A9 /* SomeSampleRequest.swift in Sources */,
 				05BDAE4A250EDAB10018EEE5 /* RKCell.swift in Sources */,
+				05214623252D2ED6000228A9 /* Configuration.swift in Sources */,
+				05214642252D35B7000228A9 /* PersistenceStore.swift in Sources */,
 				05B0C88524F4829A00CDD601 /* ToolBarView.swift in Sources */,
+				0521462D252D3034000228A9 /* SomeService.swift in Sources */,
+				0521460C252CEEA7000228A9 /* Blur.swift in Sources */,
 				05BDAE4B250EDAB10018EEE5 /* RKManager.swift in Sources */,
 				05B0C88924F4842100CDD601 /* HomeNavigationBarView.swift in Sources */,
 				05A117E424EAB8610062EBC6 /* AppDelegate.swift in Sources */,
 				05C7C72324F5D103007CF172 /* Formatter+.swift in Sources */,
 				05C6A687250564DA00440109 /* Project.swift in Sources */,
+				0521463F252D3595000228A9 /* Repository.swift in Sources */,
 				0550489F250061F300D42B48 /* Activity.swift in Sources */,
+				05214645252D3604000228A9 /* DataCache.swift in Sources */,
 				05B50C0E24F136C700DF1FDF /* BlurView.swift in Sources */,
 				05C6A6852505645B00440109 /* MakeEditView.swift in Sources */,
 				05BDAE49250EDAB10018EEE5 /* RKWeekdayHeader.swift in Sources */,
 				05B0C88B24F4847E00CDD601 /* HomeContentView.swift in Sources */,
 				05BDAE36250E70830018EEE5 /* AddTaskView.swift in Sources */,
 				05BDAE4D250EDAB10018EEE5 /* RKMonth.swift in Sources */,
+				0521461D252D2E7B000228A9 /* API.swift in Sources */,
 				05BDAE47250EDAB00018EEE5 /* RKViewController.swift in Sources */,
 				055048A12500620200D42B48 /* ActivityView.swift in Sources */,
 				05A117E624EAB8610062EBC6 /* SceneDelegate.swift in Sources */,
+				05214613252D2CB9000228A9 /* Service.swift in Sources */,
 				05BDAE3B250EBC830018EEE5 /* AddProjectView.swift in Sources */,
 				05B0C89124F48AA000CDD601 /* User.swift in Sources */,
+				05214616252D2CE4000228A9 /* Request.swift in Sources */,
 				05A4F461252A5E5B002EE79F /* UserManager.swift in Sources */,
 				05A117E824EAB8610062EBC6 /* ContentView.swift in Sources */,
 				05B0C87F24F46A9B00CDD601 /* SearchBar.swift in Sources */,
 				053D117C24F5C09F00CBCB94 /* Utility+.swift in Sources */,
 				053D117E24F5C13100CBCB94 /* Task.swift in Sources */,
 				05B0C88724F483AC00CDD601 /* ProjectCardView.swift in Sources */,
+				05214631252D3236000228A9 /* Font+.swift in Sources */,
+				05214620252D2E93000228A9 /* TaskManagerEnvironment.swift in Sources */,
 				05BDAE4C250EDAB10018EEE5 /* RKColorSettings.swift in Sources */,
 				05A4F465252A6086002EE79F /* LoginView.swift in Sources */,
 				05A4F469252A87CE002EE79F /* ProfileView.swift in Sources */,

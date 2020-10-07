@@ -11,17 +11,20 @@ import SwiftUI
 struct ActivityView: View {
     var body: some View {
         ActivityContentView()
-            // .padding()
             .navigationBarItems(trailing: Image(systemName: "line.horizontal.3.decrease.circle.fill"))
             .navigationBarTitle("Activity", displayMode: .automatic)
     }
 }
 
 struct ActivityContentView: View {
+
+    // MARK: - Property Wrappers
     @State private var searchText = ""
 
-    var activities = activitiesMock
+    // MARK: - Properties
+    fileprivate var activities = activitiesMock
 
+    // MARK: - Views
     var body: some View {
         VStack {
             ScrollView {
@@ -90,7 +93,6 @@ struct ActivityRowView: View {
 
                 VStack(alignment: .leading) {
                     Text(activity.title)
-                    // .font(.headline)
                     Text(activity.description)
                         .font(.subheadline)
                         .foregroundColor(.secondary)

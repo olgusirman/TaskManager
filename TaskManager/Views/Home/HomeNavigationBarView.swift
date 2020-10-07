@@ -29,8 +29,21 @@ struct HeaderDateView: View {
 
 struct UserProfileView: View {
     var body: some View {
-        Image(getRandomUser().profileImageName).resizable().aspectRatio(contentMode: .fill).frame(width: 44, height: 44, alignment: .trailing).cornerRadius(22)
+        Image(getRandomUser().profileImageName)
+            .configureProfileImage()
+            
     }
+}
+
+fileprivate extension Image {
+    
+    func configureProfileImage() -> some View {
+        resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 44, height: 44, alignment: .trailing)
+            .cornerRadius(22)
+    }
+    
 }
 
 struct HomeNavigationBarView_Previews: PreviewProvider {
